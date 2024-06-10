@@ -3,13 +3,16 @@ package array;
 import java.util.Scanner;
 
 public class ProductAdminEx {
+    private static final int MAX_PRODUCTS = 10;
+    private static final int CHOICE_1 = 1;
+    private static final int CHOICE_2 = 2;
+    private static final int CHOICE_3 = 3;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        final int MAX_PRODUCTS = 10;
-        // 배열 선언
-        String[] productNames = new String[10];
-        int[] productPrices = new int[10];
 
+        String[] productNames = new String[MAX_PRODUCTS];
+        int[] productPrices = new int[MAX_PRODUCTS];
 
         int productCount = 0;   // 힌트********
 
@@ -19,9 +22,9 @@ public class ProductAdminEx {
             int choice = scanner.nextInt();
             scanner.nextLine(); // nextInt 후에 남은 줄바꿈 문자 제거************
 
-            if (choice == 1) {
+            if (choice == CHOICE_1) {
 //                String lastProductName = productNames.toString();   // NullPointerException 에러를 없애기 위해 문자열로 명시
-//                ObjectUtils.notEqual(%s, %s) = %s"
+//                ObjectUtils.notEqual(%s, %s) = %s" - 이런 함수도 있다.
                 if (productCount < MAX_PRODUCTS) {
                     System.out.print("상품 이름을 입력하세요: ");
                     productNames[productCount] = scanner.nextLine();
@@ -37,7 +40,7 @@ public class ProductAdminEx {
                 }
             }
 
-            if (choice == 2) {
+            if (choice == CHOICE_2) {
                 if (productCount == 0) {
                     System.out.println("등록된 상품이 없습니다.");
                 }
@@ -45,13 +48,13 @@ public class ProductAdminEx {
                 for (int i = 0; i < productCount; i++) {
                     System.out.println(productNames[i] + ": " + productPrices[i] + "원");    // 왜 메뉴가 출력이 안될까..? => nextLine() 코드를 추가했어야했음.
                 }
-                //                for (String productName : productNames) {
-//                    for (int productPrice : productPrices) {
-//                        System.out.println(productName + ": " + productPrice + "원");
-//                    }
-//                }
+/*              for (String productName : productNames) {
+                    for (int productPrice : productPrices) {
+                        System.out.println(productName + ": " + productPrice + "원");
+                    }
+                }*/
             }
-            if (choice == 3) {
+            if (choice == CHOICE_3) {
                 System.out.println("프로그램을 종료합니다.");
                 break;
             }
